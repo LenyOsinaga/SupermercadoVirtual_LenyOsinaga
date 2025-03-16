@@ -1,0 +1,28 @@
+﻿
+<h3>Lista de productos disponibles</h3>
+<table class="table">
+	<tr>
+		
+		<td align="right" colspan="5"><a asp-controller="Carrito" asp-action="Index">Ver Carrito</a></td>
+		
+	</tr>
+	<tr>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th>Imagen</th>
+		<th>Precio</th>
+		<th>Acción</th>
+	</tr>
+	@foreach (var producto in ViewBag.Productos)
+	{
+		<tr>
+			<td>@producto.id</td>
+			<td>@producto.nombre</td>
+			<td><img src="~/imagenes/@producto.imagen" height="100" /></td>
+			<td>@producto.precio</td>
+			<td>
+				<a href="@Url.Action("Agregar", "Carrito", new { id = producto.id })">Comprar ahora</a>
+			</td>
+		</tr>
+	}
+</table>
